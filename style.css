@@ -1,0 +1,58 @@
+/* Solid Waste Dashboard Styles */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+header {
+  background: #0f766e;
+  color: white;
+  padding: 14px 22px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.kpi {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+@media (max-width: 860px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}

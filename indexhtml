@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solid Waste Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    header {
+      background: #0f766e;
+      color: white;
+      padding: 14px 22px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .kpi {
+      font-size: 26px;
+      font-weight: bold;
+      margin-top: 6px;
+    }
+    @media(max-width: 860px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Solid Waste Management Dashboard</h1>
+  </header>
+
+  <main class="container">
+    <!-- KPIs -->
+    <section class="grid grid-3">
+      <div class="card">
+        <div>Total Waste Generated</div>
+        <div class="kpi" id="wasteGen">—</div>
+        <div>tons / year</div>
+      </div>
+      <div class="card">
+        <div>Waste Recycled</div>
+        <div class="kpi" id="wasteRecycle">—</div>
+        <div>tons / year</div>
+      </div>
+      <div class="card">
+        <div>Landfilled</div>
+        <div class="kpi" id="wasteLandfill">—</div>
+        <div>tons / year</div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="grid" style="margin-top:20px;">
+      <div class="card">
+        <h2>Waste Composition</h2>
+        <canvas id="compChart"></canvas>
+      </div>
+      <div class="card">
+        <h2>Recycling vs Disposal Trend</h2>
+        <canvas id="trendChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Demo data
+    const totals = { generated: 12000, recycled: 4800, landfill: 7200 };
+    document.getElementById("wasteGen").textContent = totals.generated;
+    document.getElementById("wasteRecycle").textContent = totals.recycled;
+    document.getElementById("wasteLandfill").textContent = totals.landfill;
+
+    // Composition pie
+    new Chart(document.getElementById("compChart"), {
+      type: 'pie',
+      data: {
+        labels: ['Organic', 'Plastic', 'Paper', 'Metal', 'Glass', 'Other'],
+        datasets: [{
+          data: [40, 20, 15, 10, 8, 7],
+          backgroundColor: ['#22c55e','#f97316','#3b82f6','#64748b','#facc15','#a855f7']
+        }]
+      }
+    });
+
+    // Trend line
+    new Chart(document.getElementById("trendChart"), {
+      type: 'line',
+      data: {
+        labels: [2018, 2019, 2020, 2021, 2022, 2023],
+        datase
